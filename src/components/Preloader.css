@@ -1,0 +1,326 @@
+.av-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  color: #fff;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(27, 113, 161, 0.32), transparent 45%),
+    linear-gradient(135deg, #061426 0%, #0a2947 48%, #061629 100%);
+  animation: av-screen-in 0.65s ease both;
+}
+
+.av-preloader::before {
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+  content: "";
+  background: repeating-linear-gradient(
+    115deg,
+    transparent 0,
+    transparent 110px,
+    rgba(255, 255, 255, 0.025) 111px,
+    transparent 112px
+  );
+  animation: av-sky-drift 16s linear infinite;
+}
+
+.av-preloader::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background: linear-gradient(
+    115deg,
+    transparent 25%,
+    rgba(92, 210, 255, 0.06) 50%,
+    transparent 75%
+  );
+  transform: translateX(-100%);
+  animation: av-light-sweep 2.2s ease-in-out infinite;
+}
+
+.av-preloader-glow {
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.28;
+  pointer-events: none;
+}
+
+.av-glow-one {
+  top: -140px;
+  left: -100px;
+  background: #1ca9e8;
+  animation: av-glow-float 5s ease-in-out infinite alternate;
+}
+
+.av-glow-two {
+  right: -120px;
+  bottom: -170px;
+  background: #21c7c5;
+  animation: av-glow-float 6s ease-in-out infinite alternate-reverse;
+}
+
+.av-preloader-content {
+  width: min(520px, calc(100% - 42px));
+  text-align: center;
+  animation: av-content-rise 0.9s cubic-bezier(.2,.8,.2,1) both;
+}
+
+.av-orbit {
+  position: relative;
+  display: grid;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 28px;
+  place-items: center;
+  border: 1px solid rgba(130, 222, 255, 0.22);
+  border-radius: 50%;
+  box-shadow: 0 0 45px rgba(35, 173, 231, 0.12),
+    inset 0 0 25px rgba(35, 173, 231, 0.08);
+}
+
+.av-orbit::before,
+.av-orbit::after {
+  position: absolute;
+  inset: 9px;
+  border: 1px dashed rgba(147, 226, 255, 0.35);
+  border-radius: 50%;
+  content: "";
+  animation: av-orbit-spin 9s linear infinite;
+}
+
+.av-orbit::after {
+  inset: -7px;
+  border-style: solid;
+  border-color: transparent rgba(87, 206, 250, 0.7) transparent transparent;
+  animation-duration: 4s;
+}
+
+.av-orbit-dot {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #77e8ff;
+  box-shadow: 0 0 16px #77e8ff;
+}
+
+.av-plane {
+  display: block;
+  font-size: 37px;
+  color: #a9edff;
+  text-shadow: 0 0 24px rgba(73, 203, 255, 0.7);
+  animation: av-plane-hover 2.4s ease-in-out infinite;
+}
+
+.av-brand {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 11px;
+  font-size: clamp(30px, 5vw, 43px);
+  font-weight: 700;
+  letter-spacing: -1.7px;
+}
+
+.av-brand-mark {
+  color: #8be7ff;
+  font-size: 30px;
+}
+
+.av-preloader-eyebrow {
+  margin: 27px 0 13px;
+  color: #8fdcf4;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 4px;
+}
+
+.av-preloader-title {
+  margin: 0;
+  font-size: clamp(29px, 5vw, 46px);
+  font-weight: 500;
+  letter-spacing: -1.6px;
+  line-height: 1.15;
+}
+
+.av-preloader-title span {
+  display: inline-block;
+  color: #8ce7f7;
+  background: linear-gradient(100deg, #fff, #81e4fa, #b2fff1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.av-preloader-subtitle {
+  margin: 15px 0 27px;
+  color: rgba(229, 243, 255, 0.66);
+  font-size: 13px;
+  letter-spacing: 0.3px;
+}
+
+.av-flight-path {
+  position: relative;
+  width: min(290px, 85%);
+  height: 24px;
+  margin: 0 auto 24px;
+}
+
+.av-path-line {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  left: 0;
+  border-top: 1px dashed rgba(142, 223, 255, 0.42);
+}
+
+.av-path-plane {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  color: #a6efff;
+  font-size: 21px;
+  animation: av-route-travel 2.1s ease-in-out infinite;
+}
+
+.av-progress-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: rgba(223, 244, 255, 0.7);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+}
+
+.av-progress-row span:last-child {
+  color: #a6efff;
+  font-size: 11px;
+  letter-spacing: 0;
+}
+
+.av-progress-track {
+  height: 3px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.av-progress-fill {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, #238bda, #87edff, #b2ffe6);
+  box-shadow: 0 0 14px rgba(93, 221, 255, 0.7);
+  transition: width 0.08s linear;
+}
+
+.av-preloader-bottom {
+  position: absolute;
+  bottom: 27px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  color: rgba(225, 242, 255, 0.48);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.av-bottom-dot {
+  color: #76def7;
+  font-size: 11px;
+}
+
+@keyframes av-screen-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes av-content-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes av-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes av-plane-hover {
+  0%, 100% { transform: translateY(0) rotate(-5deg); }
+  50% { transform: translateY(-6px) rotate(2deg); }
+}
+
+@keyframes av-route-travel {
+  0% { left: 0; transform: rotate(0); }
+  45% { transform: rotate(-10deg); }
+  100% { left: calc(100% - 23px); transform: rotate(0); }
+}
+
+@keyframes av-sky-drift {
+  to { transform: translate(80px, 40px); }
+}
+
+@keyframes av-light-sweep {
+  0%, 20% { transform: translateX(-100%); }
+  75%, 100% { transform: translateX(100%); }
+}
+
+@keyframes av-glow-float {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(40px, 25px) scale(1.15); }
+}
+
+@media (max-width: 480px) {
+  .av-orbit {
+    width: 76px;
+    height: 76px;
+    margin-bottom: 23px;
+  }
+
+  .av-plane { font-size: 31px; }
+
+  .av-preloader-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2.5px;
+  }
+
+  .av-preloader-subtitle {
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .av-preloader-bottom {
+    gap: 8px;
+    font-size: 8px;
+    letter-spacing: 1px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .av-preloader *,
+  .av-preloader::before,
+  .av-preloader::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
